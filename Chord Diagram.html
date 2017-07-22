@@ -26,6 +26,7 @@
         var matrix = [
             [11975,  5871, 8916, 2868],
             [ 1951, 10048, 2060, 6171],
+
             [ 8010, 16145, 8090, 8045],
             [ 1013,   990,  940, 6907]
         ];
@@ -34,8 +35,10 @@
                 width = +svg.attr("width"),
                 height = +svg.attr("height"),
                 outerRadius = Math.min(width, height) * 0.5 - 40,
-                innerRadius = outerRadius - 30;
+                innerRadius = outerRadius - 50;
 
+
+        //坐标数字的量级
         var formatValue = d3.formatPrefix(",.0", 1e3);
 
         var chord = d3.chord()

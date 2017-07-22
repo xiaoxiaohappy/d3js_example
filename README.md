@@ -5,4 +5,4 @@
 
 
 
-[圆分区柱状图](https://xiaoxiaohappy.github.io/d3js_example/Sunburst Partition/index.html)
+[圆分区柱状图](https://xiaoxiaohappy.github.io/d3js_example/Sunburst%20Partition/index.html)

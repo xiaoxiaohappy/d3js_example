@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update enter exit</title>
+    <script src="../d3.min.js"></script>
+</head>
+<body>
+<h1>测试1 enter :数据(5)多于dom元素(1),要增加dom</h1>
+<div id="a">
+    <p>aaa</p>
+
+</div>
+
+<h1>测试2 exit :数据(3)少于dom元素(5)，要删除dom</h1>
+<div id="b">
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+</div>
+<script>
+    var arr1=[11,22,33,33,44,55]
+    var p1=d3.select("#a").selectAll("p");
+    var update = p1.data(arr1);
+    var enter  = p1.data(arr1).enter();
+    update.text(function (d,i) {
+        return "本来存在的dom:"+i+" :"+d;
+    })
+    enter.append("p").text(function (d,i) {
+        return "新加的dom:"+i+" :"+d;
+    })
+
+
+
+
+    var arr2=[11,22,33]
+    var p2=d3.select("#b").selectAll("p");
+    var update=p2.data(arr2);
+    var exit=p2.data(arr2).exit();
+    update.text(function (d,i) {
+        return "本来存在的没被删除的dom:"+i+" :"+d;
+    });
+    exit.remove()
+    console.log(exit)
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -12,23 +12,39 @@
     <p>ccc</p>
 </div>
 <div id="b">
-    <p></p>
-    <p></p>
-    <p></p>
+    <p>旧1</p>
+    <p>旧2</p>
+    <p>旧3</p>
+</div>
+
+<div id="c">
+    <p>旧1</p>
+    <p>旧2</p>
+    <p>旧3</p>
 </div>
 <script>
     var p0 = d3.select("#a").selectAll("p");
-    p0.datum("替代的内容")
+    p0.datum("替代c的内容")
       .text(function (d,i) {   //text的作用是改变页面上可视化效果，否则还是现实之前那p的内容
         return d+" "+i;
     });
     console.log(p0)
 
     var p1=d3.select("#b").selectAll("p");
-    p1.datum("替代").append("span").text(function (d,i) {
+    p1.datum("替代").text(function (d) { //这个text是渲染在页面上，把父元素p给渲染出来成新内容，而不是旧内容，其实console出来的结果是新内容了，但是需要text渲染才能在页面上显示成新内容
+        return d;
+    }).append("span").text(function (d,i) {
         return " "+d;
     })
     console.log(p1)
+
+
+    var p2=d3.select("#c").selectAll("p");
+    p2.datum("替代")
+      .append("span").text(function (d,i) {
+        return " "+d;
+    })
+    console.log(p2) //其实p1和p2在console出来是一样的
 </script>
 </body>
 </html>

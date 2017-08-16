@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>examples</title>
+    <script src="../d3.min.js"></script>
+</head>
+<body>
+<div id="a">
+    <p>aaa</p>
+    <p>bbb</p>
+    <p>ccc</p>
+</div>
+<div id="b">
+    <p></p>
+    <p></p>
+    <p>bbb</p>
+    <p>ccc</p>
+</div>
+<script>
+    var arr=[11,22,33,33,44,56]
+    var p0=d3.select("#a").selectAll("p");
+        p0.data(arr)
+           .text(function (d,i) {  //text的作用是改变页面上可视化效果，否则还是现实之前那p的内容
+            return d;
+        });
+    console.log(p0);
+
+    var p0=d3.select("#b").selectAll("p");
+    var update = p0.data(arr)
+            .text(function (d,i) {  //text的作用是改变页面上可视化效果，否则还是现实之前那p的内容
+                return d;
+            });
+    console.log(update);
+    console.log(update.enter());
+    console.log(update.exit());
+</script>
+</body>
+</html>

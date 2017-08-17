@@ -48,7 +48,6 @@
 
 
     var arr1 = [{id:5,name:"一"},{id:2,name:"二"},{id:6,name:"三"}];
-    console.log(arr1)
      arr1.sort(function (i,j) {
         return i.id-j.id;
     })
@@ -56,6 +55,7 @@
       p1.data(arr1).text(function (d) {
           return d.id+":"+d.name;
       })
+    console.log(p1)
 
 </script>
 </body>

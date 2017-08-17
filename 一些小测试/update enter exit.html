@@ -20,6 +20,15 @@
     <p>aaa</p>
     <p>aaa</p>
 </div>
+
+<h1>测试3 each</h1>
+<div id="c">
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+
+
 <script>
     var arr1=[11,22,33,33,44,55]
     var p1=d3.select("#a").selectAll("p");
@@ -48,7 +57,14 @@
 
 
 
-
+    var arr3 = [{id:5,name:"一"},{id:2,name:"二"},{id:6,name:"三"}];
+    var p3=d3.select("#c").selectAll("p");
+    p3.data(arr3).each(function (d,i) {
+        d.age=i
+     }).text(function (d,i) {
+        return "id: "+d.id+"，name： "+d.name+",age: "+d.age;
+    })
+    console.log(p3)
 
 
 

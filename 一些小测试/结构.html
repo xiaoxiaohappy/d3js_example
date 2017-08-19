@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../d3.min.js"></script>
+
+</head>
+
+<body>
+
+<script>
+    //嵌套结构
+    var test = [{"name":"jim","amount":34,"date":"11/12/2015"},
+        {"name":"carl","amount":120.11,"date":"11/12/2015"},
+        {"name":"jim","amount":45,"date":"12/01/2015"},
+        {"name":"stacy","amount":55.00,"date":"01/04/2016"},
+        {"name":"stacy","amount":34.10,"date":"01/04/2016"},
+        {"name":"stacy","amount":44.80,"date":"01/05/2016"}
+    ];
+    var nest = d3.nest() //要开始嵌套结构了
+                 .key(function (d) {
+                     return d.name;//第一个键  (即最外边的那个)
+                 })
+                 .key(function (d) {
+                     return d.amount;//第二个键
+                 })
+                 .entries(test)//被用来嵌套结构的数组
+    console.log(nest)
+
+
+    var nest = d3.nest() //要开始嵌套结构了
+            .key(function (d) {
+                return d.name;//第一个键  (即最外边的那个)
+            })
+            .sortValues(function (a,b) {
+                return d3.ascending(a.amount,b.amount);//对上面这个嵌套的结构进行排序
+            })
+            .entries(test)//被用来嵌套结构的数组
+    console.log(nest)
+
+    
+
+</script>
+
+
+</body>
+</html>

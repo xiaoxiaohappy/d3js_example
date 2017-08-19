@@ -2,9 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>矩形和文字</title>
+    <script src="../d3.min.js"></script>
+
+    <style>
+        .myText{
+            font-size: 14px;
+            color: white;
+            text-anchor: middle;
+        }
+    </style>
+
 </head>
 <body>
-$END$
+
+<script>
+    let padding={top:20,right:20,bottom:20,left:20}
+    let rectStep=35
+    let rectWidth=30
+    let width=300,height=400;
+    var svg = d3.select("body")
+            .append("svg")
+            .attr("width",width)
+            .attr("height",height);
+
+    var dataset = [ 250 , 210 , 170 , 130 , 190 ];  //数据（表示矩形的高度）
+
+    var rect = svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("fill","orange")
+            .attr("x",function (d,i) {
+                return padding.left+i*rectStep;
+            })
+            .attr("y",function (d) {
+                return height-padding.bottom-d;  //这里的d就是矩形高度 是绑定的dataset  这一行的height是svg绑定的高
+            })
+            .attr("width",rectWidth)
+            .attr("height",function (d,i) {
+                return d;
+            })
+
+
+
+    //上面是添加了矩形，下面添加矩形上的文字
+    var text=svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .attr("class","myText")
+            .attr("x",function (d,i) {
+                return padding.left+i*rectStep;
+            })
+            .attr("y",function (d,i) {
+                return height-padding.bottom-d;
+            })
+            .attr("dx",rectWidth/2)
+            .attr("dy","1em")
+                    .text(function (d) { //这是文字，需要使用text把它显示出来，否则页面上没有文字
+                        return d;
+                    })
+
+
+
+
+
+
+</script>
+
 </body>
 </html>

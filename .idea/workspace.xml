@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c3bbf6e5-2f99-4bfa-8cad-57cffa7de319" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/一些小测试/如图.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/动画/过渡.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/一些小测试/README.md" afterPath="$PROJECT_DIR$/一些小测试/README.md" />
     </list>
     <ignored path="d3js_example.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,20 +50,28 @@
         <entry file="file://$PROJECT_DIR$/一些小测试/生成器.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="588">
-              <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+              <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="如图.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/一些小测试/如图.html">
+      <file leaf-file-name="加坐标轴的折线图.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/一些小测试/加坐标轴的折线图.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="891">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding>
-                <marker date="1503232178590" expanded="true" signature="116:813" ph="//..." />
-              </folding>
+            <state relative-caret-position="189">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="过渡.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/动画/过渡.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="648">
+              <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -72,8 +79,8 @@
       <file leaf-file-name="加入坐标轴的柱状图.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/一些小测试/加入坐标轴的柱状图.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="107" column="26" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
+            <state relative-caret-position="297">
+              <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -108,8 +115,10 @@
         <option value="$PROJECT_DIR$/一些小测试/矩形和文字.html" />
         <option value="$PROJECT_DIR$/一些小测试/加入坐标轴的柱状图.html" />
         <option value="$PROJECT_DIR$/一些小测试/加入坐标轴的散点图.html" />
-        <option value="$PROJECT_DIR$/一些小测试/生成器.html" />
         <option value="$PROJECT_DIR$/一些小测试/如图.html" />
+        <option value="$PROJECT_DIR$/一些小测试/生成器.html" />
+        <option value="$PROJECT_DIR$/一些小测试/加坐标轴的折线图.html" />
+        <option value="$PROJECT_DIR$/动画/过渡.html" />
       </list>
     </option>
   </component>
@@ -165,6 +174,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="d3js_example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d3js_example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d3js_example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="动画" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -270,12 +293,12 @@
       <workItem from="1500627475320" duration="13366000" />
       <workItem from="1501565942484" duration="1233000" />
       <workItem from="1502869771328" duration="12831000" />
-      <workItem from="1503113293743" duration="17152000" />
+      <workItem from="1503113293743" duration="25136000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44582000" />
+    <option name="totallyTimeSpent" value="52566000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -489,14 +512,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/一些小测试/加入坐标轴的柱状图.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="107" column="26" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/一些小测试/数据绑定 data.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-189">
@@ -513,21 +528,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/一些小测试/生成器.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/一些小测试/如图.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="891">
           <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <marker date="1503232178590" expanded="true" signature="116:813" ph="//..." />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/一些小测试/生成器.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/一些小测试/加坐标轴的折线图.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/一些小测试/加入坐标轴的柱状图.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/动画/过渡.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>

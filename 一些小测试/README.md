@@ -22,3 +22,8 @@
 
 
 <img src="img/弧.png">
+
+(5)符号
+
+
+<img src="img/符号.png">

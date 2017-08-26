@@ -8,6 +8,8 @@
 
 <body>
 <script>
+//    ######################################################################################################################
+
     var height=400,width=400;
 
     var svg0=d3.select("body")
@@ -25,8 +27,88 @@
 //            下面这几个可以没有，这只是加了更多细节效果
             .delay(500)//延迟多长时间来过渡
             .duration(3000)//过渡的时间
-            .ease("bounce")//过渡样式
+            .ease("bounce-out")//过渡样式
 
+
+//    ######################################################################################################################
+       var svg1=d3.select("body").append("svg").attr("height",height).attr("width",width);
+
+        svg1.append("rect")
+            .attr("fill","green")
+            .attr("x",10)
+            .attr("y",10)
+            .attr("height",100)
+            .attr("width",30)
+            .transition()
+            .duration(2000)//过渡时间    不写这一句    时间就用默认值，特别快
+
+            //            过渡的属性  手动计算插值
+            .attrTween("width",function (d,i,a) {
+//                d是绑定的数据集 i是索引号  a是本来的宽度的初始值30
+                return function (t) {
+//                    t范围0-1
+                    return Number(a)+t*300;
+                }
+            })
+            .style("fill","red")
+
+
+    var text1=svg1.append("text")
+        .attr("fill","black")
+        .attr("x",100)
+        .attr("y",10)
+        .attr("dy","1.2em")
+        .attr("text-anchor","end")
+        .text(100)
+
+
+    var initx=text1.attr("x")
+    var initText=text1.text()
+    var textTran=text1.transition()
+        .duration(2000)
+        .tween("text",function () {
+            return function (t) {
+                d3.select(this)
+                    .attr("x",Number(initx)+t*300)
+                    .text(Math.floor(Number(initText)+t*300))
+            }
+        })
+
+
+
+
+
+//    ######################################################################################################################
+var svg2=d3.select("body").append("svg").attr("width",width).attr("height",height);
+
+    var g2=    svg2.append("rect")
+            .attr("fill","orange")
+            .attr("x",10)
+            .attr("y",10)
+            .attr("height",30)
+             .attr("width",20);
+
+        g2.transition()
+            .duration(3000)
+            .each("start",function (d,i) {
+                console.log("start")
+//                过渡刚开始
+            })
+            .each("interrupt",function (d,i) {
+                console.log("interrupt")
+            })
+            .each("end",function (d,i) {
+                console.log("end")
+//                过渡刚结束
+            })
+            .attr("height",300)
+
+
+    setTimeout(function () {
+        g2.transition()
+            .select("react")
+            .attr("height",100)
+    },1000)
 
 
 </script>

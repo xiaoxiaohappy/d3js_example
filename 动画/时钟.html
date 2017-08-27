@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时钟</title>
+    <style>
+        .time{
+            font-family: Cursive;
+            font-size: 50px;
+            stroke: block;
+            stroke-width: 2;
+        }
+    </style>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+<script>
+    function getTimeString() {
+        var time =new Date();
+
+        var hours=time.getHours();
+        var minutes = time.getMinutes();
+        var seconds = time.getSeconds();
+
+//        将1,2,3变为01,02,03
+        hours = hours<10?"0"+hours :hours;
+        minutes = minutes<10?"0"+minutes:minutes;
+//        seconds = seconds<10?"0"+minutes:minutes;
+
+//        return hours+":"+minutes+":"+seconds;
+        return hours+":"+minutes;
+
+    }
+
+    var width=500;
+    var height=500;
+
+    var svg=d3.select("body")
+            .append("svg")
+            .attr("width",width)
+            .attr("height",height);
+
+    var timeText = svg.append("text")
+            .attr("x",100)
+            .attr("y",100)
+            .attr("class","time")
+            .text(getTimeString());
+
+    function updateTime() {
+//        debugger
+        timeText.text(getTimeString());
+    }
+
+    setInterval(updateTime,1000);
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>keydown\keypress\keyup</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+<script>
+    var char = ["A","S","D","F"];
+
+    var height=500,width=500;
+    var svg=d3.select("body")
+            .append("svg")
+            .attr("height",height)
+            .attr("width",width);
+
+
+
+
+    var rects=svg.selectAll("rect")
+            .data(char)
+            .enter()
+            .append("rect")
+            .attr("x",function (d,i) {
+                return 10+i*80;
+            })
+            .attr("y",150)
+            .attr("height",60)
+            .attr("width",60)
+            .attr("rx",5)
+            .attr("ry",5)
+            .attr("fill","black")
+
+    var texts=svg.selectAll("text")
+            .data(char)
+            .enter()
+            .append("text")
+            .attr("x",function (d,i) {
+                return 10+i*80;
+            })
+            .attr("y",150)
+            .attr("dx",10)
+            .attr("dy",25)
+            .attr("fill","white")
+            .attr("font-size",30)
+            .text(function (d) {
+                return d;
+            })
+
+
+    d3.select("body")
+            .on("keydown",function () {
+//                键盘刚刚按下
+                rects.attr("fill",function (d) {
+//                    console.log(d)
+//                    console.log(String.fromCharCode(d3.event.keyCode))
+
+                    if(d==String.fromCharCode(d3.event.keyCode)){
+
+                        return "orange";
+                    }
+                    else{
+
+                        return "blcak";
+                    }
+                })
+            })
+            .on("keyup",function () {
+//                释放键盘
+                rects.attr("fill","black")
+            });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>触屏事件</title>
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+<h1>请切换至手机视图，然后拖拽圆吧~</h1>
+<script>
+    var height=500,width=500;
+
+    var svg=d3.select("body")
+            .append("svg")
+            .attr("height",height)
+            .attr("width",width);
+
+    var rect = svg.append("rect")
+            .attr("x",100)
+            .attr("y",100)
+            .attr("height",100)
+            .attr("width",100)
+            .attr("dx",30)
+            .attr("dy",30)
+            .attr("fill","blue");
+
+    var circle = svg.append("circle")
+            .attr("r",50)
+            .attr("cx",400)
+            .attr("cy",400)
+            .attr("fill","pink");
+
+
+//    下面添加 触屏事件
+    circle.on("touchstart",function () {
+        d3.select(this).attr("fill","brown");
+    })
+            .on("touchmove",function () {
+                var pos=d3.touches(this)[0];
+                d3.select(this)
+                        .attr("cx",pos[0])
+                        .attr("cy",pos[1]);
+            })
+            .on("touchend",function () {
+                d3.select(this).attr("fill","pink");
+            })
+</script>
+
+</body>
+</html>

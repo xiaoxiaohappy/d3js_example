@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽行为</title>
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+<h1>在pc端可拖拽，在手机视图下也可拖拽</h1>
+<script>
+    var height=800,width=800;
+    var circleData=[{r:30,cx:150,cy:200},{r:30,cx:250,cy:200}];
+
+
+    var svg=d3.select("body")
+            .append("svg")
+            .attr("height",height)
+            .attr("width",width);
+
+
+    var circles = svg.selectAll("circle")
+            .data(circleData)
+            .enter()
+            .append("circle")
+            .attr("r",function (d) {
+                return d.r;
+            })
+            .attr("cx",function (d) {
+                return d.cx;
+            })
+            .attr("cy",function (d) {
+                return d.cy;
+            });
+
+
+//    下面开始添加 拖拽事件
+    var drag = d3.behavior.drag()
+            .origin(function (d,i) {
+                return {x:d.cx,y:d.cy};
+//                return {x:30,y:30};
+
+            })
+            .on("dragstart",function (d) {
+                console.log("dragstart");
+            })
+            .on("drag",function (d,i) {
+                d3.select(this) //当前被拖拽的元素
+                        .attr("cx",d.cx = d3.event.x)
+                        .attr("cy",d.y = d3.event.y);
+            })
+            .on("dragend",function (d) {
+                console.log("dragend");
+            })
+    circles.call(drag);//调用drag
+</script>
+</body>
+</html>

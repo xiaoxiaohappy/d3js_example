@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缩放行为</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+
+</head>
+<body>
+<script>
+    var height=800,width=800;
+    var circleData=[{r:30,cx:150,cy:200},{r:30,cx:250,cy:200}];
+
+
+
+    var svg = d3.select("body")
+            .append("svg")
+            .attr("height",height)
+            .attr("width",width);
+
+    var g=svg.append("g");//注意  是为g添加缩放事件（所有圆在g上），所以所有的圆一起缩放
+
+    g.selectAll("circle")
+            .data(circleData)
+            .enter()
+            .append("circle")
+            .attr("r",function (d) {
+                return d.r;
+            })
+            .attr("cx",function (d) {
+                return d.cx;
+            })
+            .attr("cy",function (d) {
+                return d.cy;
+            })
+            .attr("fill","pink");
+
+//    下面开始写 缩放事件
+    var zoom = d3.behavior.zoom()
+            .scaleExtent([1,10])//缩放的范围
+            .on("zoomstart",function (d) {
+                console.log("zoomstart");
+            })
+            .on("zoom",function (d,i) {
+                d3.select(this)
+                        .attr("transform","translate("+d3.event.translate+")"+"scale("+d3.event.scale+")");
+//                d3.event.translate是平移量，d3.event.scale是缩放量
+                console.log("d3.event.translate:"+d3.event.translate);
+                console.log("d3.event.scale:"+d3.event.scale);
+
+            })
+            .on("zoomend",function (d) {
+                console.log("zoomend");
+            })
+    g.call(zoom);//g调用zoom
+
+</script>
+
+</body>
+</html>

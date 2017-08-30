@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弦图</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+<script>
+//    <!--原始数据-->
+    var city_name = [ "北京" , "上海" , "广州" , "深圳" , "香港"  ];
+    var population = [
+        [ 1000,  3045　 , 4567　, 1234 , 3714 ],
+        [ 3214,  2000　 , 2060　, 124  , 3234 ],
+        [ 8761,  6545　 , 3000　, 8045 , 647  ],
+        [ 3211,  1067  , 3214 , 4000  , 1006 ],
+        [ 2146,  1034　 , 6745 , 4764  , 5000 ]
+    ];
+
+
+    var height=600,width=600;
+    var svg=d3.select("body")
+            .append("svg")
+            .attr("height",height)
+            .attr("width",width);
+
+
+
+
+//    布局 转换数据
+    var chord = d3.layout.chord()
+            .padding(0.03)//弦图的节点间的距离
+            .sortSubgroups(d3.ascending)
+            .matrix(population)//获取方块矩阵  这里就是转化了数据
+    console.log(chord.groups())//节点数组
+    console.log(chord.chords())//弦数组
+
+
+
+
+    var gChord=svg.append("g")//放弦图
+            .attr("transform","translate("+width/2+","+height/2+")");
+    var gOuter=gChord.append("g")//放弦图中的节点
+    var gInner=gChord.append("g")//放弦图中的弦
+
+
+    var color=d3.scale.category20();
+
+    //画节点
+    var innerRadius=width/2*0.7;
+    var outerRadius=innerRadius*1.1;
+    var arcOuter=d3.svg.arc()//定义弧生成器
+            .innerRadius(innerRadius)
+            .outerRadius(outerRadius);
+    gOuter.selectAll("path")
+            .data(chord.groups())
+            .enter()
+            .append("path")
+            .attr("class","outerPath")
+            .attr("fill",function (d) {
+                return color(d.index);  //index是节点对象的其中一个属性
+            })
+            .attr("d",arcOuter);//使用弧生成器
+
+
+    //画弦
+    var arcInner=d3.svg.chord()//定义弦生成器
+            .radius(innerRadius);
+    gInner.selectAll("path")
+            .data(chord.chords())
+            .enter()
+            .append("path")
+            .attr("class","innerPath")
+            .attr("d",arcInner)
+            .style("fill",function (d) {
+                return color(d.source.index);
+            })
+
+
+
+
+
+    //交互
+    gInner.selectAll("path")
+            .on("mouseover",function (d,i) {
+                console.log(this)
+                d3.select(this).style("fill","pink")
+//                        .attr("opacity",0.5);
+            })
+            .on("mouseout",function (d,i) {
+                console.log(this)
+
+                d3.select(this)
+                        .transition()
+                        .duration(1000)
+                        .style("fill",color(d.source.index))
+            })
+
+
+</script>
+</body>
+</html>

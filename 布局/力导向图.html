@@ -34,7 +34,13 @@
             .nodes(nodes) //指定节点数组
             .links(edges) //指定连线数组
             .size([width,height]) //指定作用域范围
-            .linkDistance(150) //指定连线长度
+            .linkDistance(function (d,i) {
+//                console.log(d);
+//                console.log(i+10);
+//                改变连线长度
+//                return i+10;
+                return 150;
+            }) //指定连线长度
             .charge([-400]); //相互之间的作用力
 
     force.start();
@@ -54,7 +60,11 @@
             .enter()
             .append("line")
             .style("stroke","#ccc")
-            .style("stroke-width",1);
+            .style("stroke-width",function (d,i) {
+                return 5;
+//                改变连线的粗细
+//                return i+1;
+            });
 
     var color = d3.scale.category20();
 
@@ -63,7 +73,11 @@
             .data(nodes)
             .enter()
             .append("circle")
-            .attr("r",20)
+            .attr("r",function (d,i) {
+                return 20;
+//                改变节点大小
+//                return i*10+1;
+            })
             .style("fill",function(d,i){
                 return color(i);
             })
@@ -101,6 +115,131 @@
                 .attr("y", function(d){ return d.y; });
     });
 //    ###################################################################################################
+
+</script>
+<script>
+    var height=500,width=500;
+    var svg=d3.select("body")
+            .append("svg")
+            .attr("height",height)
+            .attr("width",width);
+
+
+
+    var nodes = [ { name: "桂林" }, { name: "广州" },
+        { name: "厦门" }, { name: "杭州" },
+        { name: "上海" }, { name: "青岛" },
+        { name: "天津" } ];
+
+    var edges = [ { source : 0 , target: 1 } , { source : 0 , target: 2 } ,
+        { source : 0 , target: 3 } , { source : 1 , target: 4 } ,
+        { source : 1 , target: 5 } , { source : 1 , target: 6 } ];
+
+    //    ###################################################################################################
+    //    绘制力导向图
+
+    var force = d3.layout.force();
+
+    force.nodes(nodes)
+            .links(edges)
+            .size([width,height])
+            .linkDistance(100)
+            .charge(-400);
+    force.start();
+
+    console.log(nodes);
+    console.log(edges);
+
+    var color = d3.scale.category20();
+    console.log(color)
+    var lines=svg.selectAll(".forceLine")
+            .data(edges)
+            .enter()
+            .append("line")
+            .attr("class","forceLine")
+            .style("stroke","#ccc")
+            .style("stroke-width",function (d,i) {
+                return 5;
+//                改变连线的粗细
+//                return i+1;
+            });
+    var circles=svg.selectAll(".forceCircle")
+            .data(nodes)
+            .enter()
+            .append("circle")
+            .attr("class","forceCircle")
+            .attr("r",20)
+            .style("fill",function (d,i) {
+//                console.log(color(i))
+                return color(i);
+            })
+            .call(force.drag);  //调用函数，使节点允许被拖拽
+    var texts=svg.selectAll(".forceText")
+            .data(nodes)
+            .enter()
+            .append("text")
+            .attr("class","forceText")
+            .attr("x",function (d) {
+                return d.x;
+            })
+            .attr("y",function (d,i) {
+                return d.y;
+            })
+            .text(function (d) {
+                return d.name;
+            })
+
+
+    force.on("tick",function () {
+//        更新连线端点的坐标
+        lines.attr("x1",function (d) {
+            return d.source.x;
+        })
+                .attr("y1",function (d) {
+                    return d.source.y;
+                })
+                .attr("x2",function (d) {
+                    return d.target.x;
+                })
+                .attr("y2",function (d) {
+                    return d.target.y;
+                });
+
+//        更新节点的坐标
+        circles.attr("cx",function (d) {
+            return d.x;
+        })
+                .attr("cy",function (d) {
+                    return d.y
+
+                })
+
+//        更新文字
+        texts.attr("x",function (d) {
+            return d.x;
+        })
+                .attr("y",function (d) {
+                    return d.y;
+                })
+
+    })
+
+    var drag=force.drag()
+            .on("dragstart",function (d) {
+                d.fixed=true;//每个节点都有一个fixed属性，当值为true时，代表该节点被设置为固定
+            })
+            .on("drag",function (d,i) {
+//                拖拽该节点的时候  该节点要变色
+                d3.select(this)
+                        .attr("fill","orange")
+            })
+            .on("dragend",function (d,i) {
+//                拖拽结束的时候 该节点又返回到原来的颜色
+                d3.select(this).style("fill",color[i]);
+
+            })
+
+    //    ###################################################################################################
 
 </script>
 </body>

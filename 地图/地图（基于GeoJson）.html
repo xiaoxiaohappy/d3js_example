@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于GeoJson</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+<script>
+    var width=800,height=800;
+
+    var svg=d3.select("body")
+            .append("svg")
+            .attr("height",height)
+            .attr("width",width);
+
+//    地图的投影
+    var projection=d3.geo.mercator()
+            .center([107,31])
+            .scale(600)
+            .translate([width/2,height/2]);
+
+
+//    地理的路径生成器
+    var path=d3.geo.path()
+            .projection(projection)
+
+
+    var color=d3.scale.category20()
+
+    d3.json("china.geojson",function (error,root) {
+
+        console.log(root)
+
+
+        var groups=svg.append("g");
+        groups.selectAll("path")
+                .data(root.features)
+                .enter()
+                .append("path")
+                .attr("fill",function (d,i) {
+                    return color(i);
+                })
+                .attr("d",path);
+    })
+</script>
+</body>
+</html>
